@@ -96,3 +96,50 @@ class Magazine:
 
         # Return None if no authors meet the condition, otherwise return the list
         return authors_with_multiple_articles if authors_with_multiple_articles else None
+
+mag1 = Magazine("Tech Weekly", "Technology")
+mag2 = Magazine("Health Today", "Health")
+
+# Create authors
+author1 = Author("Paul")
+author2 = Author("Bob")
+
+# Authors write articles
+article1 = author1.add_article(mag1, "The Future of AI")
+article2 = author1.add_article(mag1, "Quantum Computing 101")
+article3 = author2.add_article(mag2, "Healthy Living Tips")
+
+
+# Print all articles by Alice
+print(f"Articles by {author1.name}:")
+for article in author1.articles():
+    print(f" - {article.title}")
+
+# Print all magazines Alice has contributed to
+print(f"\nMagazines by {author1.name}:")
+for mag in author1.magazines():
+    print(f" - {mag.name}")
+
+# Print the topic areas Alice has contributed to
+print(f"\nTopic Areas by {author1.name}:")
+for topic in author1.topic_areas():
+    print(f" - {topic}")
+
+# Print all authors who have contributed to Tech Weekly
+print(f"\nAuthors contributing to {mag1.name}:")
+for author in mag1.contributors():
+    print(f" - {author.name}")
+
+# Print all articles in Tech Weekly
+print(f"\nArticles in {mag1.name}:")
+for title in mag1.article_titles():
+    print(f" - {title}")
+
+# Print contributing authors for Tech Weekly 
+print(f"\nAuthors with more than 2 articles in {mag1.name}:")
+contributing_authors = mag1.contributing_authors()
+if contributing_authors:
+    for author in contributing_authors:
+        print(f" - {author.name}")
+else:
+    print("No authors with more than 2 articles.")
